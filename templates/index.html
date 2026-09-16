@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clareza • Controle financeiro</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <script defer src="{{ url_for('static', filename='js/comum.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</head>
+<body data-pagina="{{ pagina }}">
+  <aside class="sidebar">
+    <a class="marca" href="/">c<span>clareza</span></a><p class="legenda">SUAS FINANÇAS, EM ORDEM</p>
+    <nav aria-label="Menu principal">
+      {% for rota, titulo, icone in [('dashboard','Dashboard','◫'),('transacoes','Transações','⇄'),('metas','Metas','◎'),('planejamento','Planejamento','▤'),('relatorios','Relatórios','▥'),('configuracoes','Configurações','⚙')] %}
+      <a href="{{ '/' if rota == 'dashboard' else '/' + rota }}" class="{{ 'ativo' if pagina == rota else '' }}" {% if pagina == rota %}aria-current="page"{% endif %}><span aria-hidden="true">{{ icone }}</span>{{ titulo }}</a>
+      {% endfor %}
+    </nav>
+    <div class="sidebar-rodape"><span class="avatar">EU</span><div>Meu espaço pessoal<small>Um passo de cada vez.</small></div></div>
+  </aside>
+  <main>
+    <header class="topo"><span>CONTROLE FINANCEIRO PESSOAL</span><span class="selo">Meu planejamento</span></header>
+    <div id="mensagem" role="status" aria-live="polite" hidden></div>
+    {% block conteudo %}{% endblock %}
+    <footer>Clareza · Organização hoje, tranquilidade amanhã.</footer>
+  </main>
+</body>
+</html>

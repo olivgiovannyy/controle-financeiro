@@ -1,0 +1,6 @@
+{% extends 'index.html' %}
+{% block scripts %}<script defer src="{{ url_for('static', filename='js/planejamento.js') }}"></script>{% endblock %}
+{% block conteudo %}
+<div class="titulo"><div><p class="eyebrow">EVOLUÇÃO</p><h1>Compare seus meses</h1><p>Veja o que mudou nas suas finanças.</p></div></div>
+<section class="painel"><form id="form-comparacao" class="filtros"><label>Primeiro mês<input name="primeiro" type="month" required></label><label>Segundo mês<input name="segundo" type="month" required></label><button>Comparar</button></form><div id="comparacao"></div></section>
+{% endblock %}

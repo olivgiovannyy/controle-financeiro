@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block scripts %}<script defer src="{{ url_for('static', filename='js/transacoes.js') }}"></script>{% endblock %}
+{% block conteudo %}
+<div class="titulo"><div><p class="eyebrow">MOVIMENTAÇÕES</p><h1>Transações</h1><p>Cada registro ajuda a entender seu mês.</p></div><button id="nova">+ Nova transação</button></div>
+<section class="painel">
+<form id="filtros" class="filtros"><label>Mês<input type="month" name="mes"></label><label>Ano<input type="number" name="ano" min="1" max="9999" placeholder="Todos"></label><label>Tipo<select name="tipo"><option value="">Todos</option value="receita">Receita</option><option value="despesa">Despesa</option></select></label><label>Categoria<select name="categoria" id="filtro-categoria"><option value="">Todas</option></select></label><button type="submit">Filtrar</button><button type="reset" class="secundario">Limpar</button></form>
+<div class="tabela"><table><caption class="sr-only">Movimentações financeiras</caption><thead><tr><th>Data</th><th>Descrição</th><th>Categoria</th><th>Tipo</th><th>Valor</th><th>Ações</th></tr></thead><tbody id="linhas"></tbody></table></div><p id="contagem" class="nota"></p>
+</section>
+<dialog id="modal"><form id="form-transacao"><div class="entre"><h2 id="titulo-modal">Nova transação</h2><button type="button" id="fechar" class="secundario" aria-label="Fechar formulário">✕</button></div><input name="id" type="hidden"><label>Descrição<input name="descricao" required maxlength="120" placeholder="Ex.: compra do mercado"></label><div class="dupla"><label>Valor (R$)<input name="valor" type="number" required min="0.01" max="999999999" step="0.01"></label><label>Data<input name="data" type="date" required></label></div><div class="dupla"><label>Tipo<select name="tipo"><option value="despesa">Despesa</option><option value="receita">Receita</option></select></label><label>Categoria<select name="categoria" required></select></label></div><p id="erro-form" role="alert" class="negativo"></p><button type="submit">Salvar transação</button></form></dialog>
+{% endblock %}

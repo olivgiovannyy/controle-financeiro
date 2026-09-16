@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% block scripts %}<script defer src="{{ url_for('static', filename='js/dashboard.js') }}"></script>{% endblock %}
+{% block conteudo %}
+<div class="titulo"><div><p class="eyebrow">VISÃO GERAL</p><h1>Seu dinheiro, com clareza.</h1><p>Acompanhe o mês e encontre espaço para seus planos.</p></div><div class="acoes"><label>Mês de referência<input id="mes" type="month" required></label><a class="botao" href="/transacoes">+ Nova transação</a></div></div>
+<div id="cards" class="cards" aria-live="polite"></div>
+<div class="grade">
+  <section class="painel"><h2>Receitas × despesas</h2><p>O resultado do mês selecionado</p><div class="grafico"><canvas id="balanco" aria-label="Receitas, despesas e saldo do mês" role="img"></canvas></div></section>
+  <section class="painel"><h2>Para onde vai seu dinheiro?</h2><p>Saídas por categoria</p><div class="grafico"><canvas id="categorias" aria-label="Gastos por categoria" role="img"></canvas></div><div id="categorias-texto" class="resumo-grafico"></div></section>
+  <section class="painel largo"><h2>Seu ano em perspectiva</h2><p>Receitas e despesas ao longo dos meses</p><div class="grafico"><canvas id="evolucao" aria-label="Evolução mensal das receitas e despesas" role="img"></canvas></div></section>
+  <section class="painel"><h2>Análise financeira</h2><ul id="analises" class="insights"></ul></section>
+  <section class="painel verde-suave"><p class="eyebrow">PEQUENAS MUDANÇAS</p><h2>Onde posso economizar?</h2><div id="sugestoes"></div><p class="nota">Simulações de redução, sem alterar seus registros.</p></section>
+  <section class="painel"><h2>Distribuição da renda</h2><div class="grafico"><canvas id="distribuicao" aria-label="Distribuição entre despesas, aportes e sobra" role="img"></canvas></div><p id="distribuicao-nota" class="nota"></p></section>
+  <section class="painel"><div class="entre"><h2>Limites do mês</h2><a href="/planejamento">Ajustar</a></div><div id="orcamentos"></div></section>
+</div>
+{% endblock %}
